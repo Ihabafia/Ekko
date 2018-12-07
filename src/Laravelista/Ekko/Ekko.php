@@ -65,8 +65,14 @@ class Ekko
      */
     public function isActiveMatch($string, $output = "active")
     {
-        if (strpos($this->url->current(), $string) !== false) {
-            return $output;
+        if (is_string($stringArray)) {
+            $stringArray = [$stringArray];
+        }
+
+        foreach ($stringArray as $string) {
+            if (strpos($this->url->current(), $string) !== false) {
+                return $output;
+            }
         }
 
         return null;
